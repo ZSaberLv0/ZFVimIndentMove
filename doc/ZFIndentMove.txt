@@ -23,7 +23,7 @@ example
 
 assume you have something like this
 
-            void func()
+             void func()
       QH >>  {
                  foo();
     QKQK >>      foo();

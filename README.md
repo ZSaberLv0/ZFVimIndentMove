@@ -25,7 +25,7 @@ vim script to move cursor quickly accorrding indent
 assume you have something like this
 
 ```
-        void func()
+         void func()
   QH >>  {
              foo();
 QKQK >>      foo();
