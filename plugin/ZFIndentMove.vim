@@ -5,6 +5,9 @@ function! ZF_IndentGetIndentLevel(line)
     let line = substitute(a:line, '\t', '    ', 'g')
     return strlen(matchstr(line, "^\\s\\+")) / &tabstop
 endfunction
+function! ZF_IndentIsEmpty(line)
+    return strlen(substitute(a:line, '[\t ]', '', 'g')) == 0
+endfunction
 function! ZF_IndentMoveParent()
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -19,7 +22,7 @@ function! ZF_IndentMoveParent()
             let parent_indent = 0
         endif
 
-        if strlen(getline(".")) == 0
+        if ZF_IndentIsEmpty(getline("."))
             continue
         endif
         if parent_indent == 0 && cur_indent == 0
@@ -44,7 +47,7 @@ function! ZF_IndentMoveParentEnd()
             let parent_indent = 0
         endif
 
-        if strlen(getline(".")) == 0
+        if ZF_IndentIsEmpty(getline("."))
             continue
         endif
         if parent_indent == 0 && cur_indent == 0
@@ -70,7 +73,7 @@ function! ZF_IndentMovePrev()
             let parent_indent = 0
         endif
 
-        if strlen(getline(".")) == 0
+        if ZF_IndentIsEmpty(getline("."))
             let skip_flag = 1
             continue
         endif
@@ -97,7 +100,7 @@ function! ZF_IndentMoveNext()
             let next_indent = 0
         endif
 
-        if strlen(getline(".")) == 0
+        if ZF_IndentIsEmpty(getline("."))
             let skip_flag = 1
             continue
         endif
