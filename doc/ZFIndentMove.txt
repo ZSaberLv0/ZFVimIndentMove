@@ -12,33 +12,83 @@ how to use
 
     Plugin 'ZSaberLv0/ZFIndentMove.vim'
 
-2. have your own keymap in your vimrc
+2. have your own keymap in your vimrc, recommended keymap:
 
-    nnoremap QH :call ZF_IndentMoveParent()<cr>
-    nnoremap QL :call ZF_IndentMoveParentEnd()<cr>
-    nnoremap QK :call ZF_IndentMovePrev()<cr>
-    nnoremap QJ :call ZF_IndentMoveNext()<cr>
+    nnoremap EE ``
+    nnoremap EH :call ZF_IndentMoveParent()<cr>
+    nnoremap EL :call ZF_IndentMoveChild()<cr>
+    nnoremap EK :call ZF_IndentMovePrev()<cr>
+    nnoremap EJ :call ZF_IndentMoveNext()<cr>
 
-example
+functions
 
-assume you have something like this
+* ZF_IndentGetIndentLevel(line)
 
-             void func()
-      QH >>  {
-                 foo();
-    QKQK >>      foo();
+    get indent level of line, accorrding to your `tabstop`
 
-                 foo();
-      QK >>      foo();
+* ZF_IndentIsEmpty(line)
 
-                 foo();
-     cur >>      foo();
-                 foo();
+    true if line is empty or contains spaces or tabs only
 
-      QJ >>      foo();
-                 foo();
+* ZF_IndentMoveParent()
 
-    QJQJ >>      foo();
-                 foo();
-      QL >>  }
+    move up to nearest parent indent
+    (whose indent is less than current line)
+
+        move >> foo
+                    foo
+
+         cur >>     foo
+
+* ZF_IndentMoveParentEnd()
+
+    move down to nearest parent indent
+    (whose indent is less than current line)
+
+         cur >>     foo
+
+                    foo
+        move >> foo
+
+* ZF_IndentMoveChild()
+
+    move down to nearest child indent
+    (whose indent is larger than current line)
+
+         cur >> foo
+                foo
+
+        move >>     foo
+
+* ZF_IndentMovePrev()
+
+    move up to nearest sibling or parent indent
+    (whose indent is equal to or less than current line, skip first empty or same indent line)
+
+        move >> foo
+
+                foo
+         cur >> foo
+
+    or
+
+        move >> foo
+                    foo
+         cur >>     foo
+
+* ZF_IndentMoveNext()
+
+    move down to nearest sibling or parent indent
+    (whose indent is equal to or less than current line, skip first empty or same indent line)
+
+         cur >> foo
+                foo
+
+        move >> foo
+
+    or
+
+         cur >>     foo
+                    foo
+        move >> foo
 
