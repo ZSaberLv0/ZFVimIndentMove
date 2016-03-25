@@ -15,10 +15,16 @@ how to use
 2. have your own keymap in your vimrc, recommended keymap:
 
     nnoremap EE ``
-    nnoremap EH :call ZF_IndentMoveParent()<cr>
-    nnoremap EL :call ZF_IndentMoveChild()<cr>
-    nnoremap EK :call ZF_IndentMovePrev()<cr>
-    nnoremap EJ :call ZF_IndentMoveNext()<cr>
+    nnoremap EH :call ZF_IndentMoveParent('n')<cr>
+    xnoremap EH :call ZF_IndentMoveParent('v')<cr>
+    nnoremap EL :call ZF_IndentMoveParentEnd('n')<cr>
+    xnoremap EL :call ZF_IndentMoveParentEnd('v')<cr>
+    nnoremap EK :call ZF_IndentMovePrev('n')<cr>
+    xnoremap EK :call ZF_IndentMovePrev('v')<cr>
+    nnoremap EJ :call ZF_IndentMoveNext('n')<cr>
+    xnoremap EJ :call ZF_IndentMoveNext('v')<cr>
+    nnoremap EI :call ZF_IndentMoveChild('n')<cr>
+    xnoremap EI :call ZF_IndentMoveChild('v')<cr>
 
 functions
 

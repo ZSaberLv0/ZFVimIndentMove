@@ -12,8 +12,11 @@ endfunction
 function! ZF_IndentIsEmpty(line)
     return strlen(substitute(a:line, '[\t ]', '', 'g')) == 0
 endfunction
-function! ZF_IndentMoveParent()
+function! ZF_IndentMoveParent(mode)
     normal! m`
+    if a:mode=='v'
+        execute 'normal! \<esc>'
+    endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
@@ -31,9 +34,15 @@ function! ZF_IndentMoveParent()
             break
         endif
     endfor
+    if a:mode=='v'
+        normal! m>gv
+    endif
 endfunction
-function! ZF_IndentMoveParentEnd()
+function! ZF_IndentMoveParentEnd(mode)
     normal! m`
+    if a:mode=='v'
+        execute 'normal! \<esc>'
+    endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
@@ -51,9 +60,15 @@ function! ZF_IndentMoveParentEnd()
             break
         endif
     endfor
+    if a:mode=='v'
+        normal! m>gv
+    endif
 endfunction
-function! ZF_IndentMoveChild()
+function! ZF_IndentMoveChild(mode)
     normal! m`
+    if a:mode=='v'
+        execute 'normal! \<esc>'
+    endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
@@ -68,9 +83,15 @@ function! ZF_IndentMoveChild()
             break
         endif
     endfor
+    if a:mode=='v'
+        normal! m>gv
+    endif
 endfunction
-function! ZF_IndentMovePrev()
+function! ZF_IndentMovePrev(mode)
     normal! m`
+    if a:mode=='v'
+        execute 'normal! \<esc>'
+    endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
@@ -93,9 +114,15 @@ function! ZF_IndentMovePrev()
             break
         endif
     endfor
+    if a:mode=='v'
+        normal! m>gv
+    endif
 endfunction
-function! ZF_IndentMoveNext()
+function! ZF_IndentMoveNext(mode)
     normal! m`
+    if a:mode=='v'
+        execute 'normal! \<esc>'
+    endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
@@ -118,5 +145,8 @@ function! ZF_IndentMoveNext()
             break
         endif
     endfor
+    if a:mode=='v'
+        normal! m>gv
+    endif
 endfunction
 
