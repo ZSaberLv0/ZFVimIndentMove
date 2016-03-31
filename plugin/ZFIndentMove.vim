@@ -72,6 +72,7 @@ function! ZF_IndentMoveChild(mode)
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
 
+    let child_exist=0
     for i in range(cur_line, line("$"))
         normal! j
         let child_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -80,9 +81,13 @@ function! ZF_IndentMoveChild(mode)
             continue
         endif
         if child_indent > cur_indent
+            let child_exist=1
             break
         endif
     endfor
+    if child_exist==0
+        normal! ``
+    endif
     if a:mode=='v'
         normal! m>gv
     endif
