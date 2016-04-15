@@ -1,4 +1,4 @@
-" ZFIndentMove.vim - vim script to move cursor quickly accorrding indent
+" ZFVimIndentMove - vim script to move cursor quickly accorrding indent
 " Author:  ZSaberLv0 <http://zsaber.com/>
 
 function! ZF_IndentGetIndentLevel(line)

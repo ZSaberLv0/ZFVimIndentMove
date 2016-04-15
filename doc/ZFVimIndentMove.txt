@@ -1,4 +1,4 @@
-*ZFIndentMove.vim*
+*ZFVimIndentMove*
 
 Author: ZSaberLv0 <http://zsaber.com/>
 
@@ -10,7 +10,7 @@ how to use
 
 1. use [Vundle](https://github.com/VundleVim/Vundle.vim) or any other plugin manager you like to install
 
-    Plugin 'ZSaberLv0/ZFIndentMove.vim'
+    Plugin 'ZSaberLv0/ZFVimIndentMove'
 
 2. have your own keymap in your vimrc, recommended keymap:
 

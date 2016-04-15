@@ -1,4 +1,4 @@
-# ZFIndentMove.vim
+# ZFVimIndentMove
 
 vim script to move cursor quickly accorrding indent
 
@@ -8,7 +8,7 @@ vim script to move cursor quickly accorrding indent
 1. use [Vundle](https://github.com/VundleVim/Vundle.vim) or any other plugin manager you like to install
 
     ```
-    Plugin 'ZSaberLv0/ZFIndentMove.vim'
+    Plugin 'ZSaberLv0/ZFVimIndentMove'
     ```
 
 1. have your own keymap in your vimrc, recommended keymap:
