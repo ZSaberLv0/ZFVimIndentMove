@@ -15,7 +15,7 @@ endfunction
 function! ZF_IndentMoveParent(mode)
     normal! m`
     if a:mode=='v'
-        execute 'normal! \<esc>'
+        execute "normal! gv\<esc>"
     endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -41,7 +41,7 @@ endfunction
 function! ZF_IndentMoveParentEnd(mode)
     normal! m`
     if a:mode=='v'
-        execute 'normal! \<esc>'
+        execute "normal! gv\<esc>"
     endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -67,7 +67,7 @@ endfunction
 function! ZF_IndentMoveChild(mode)
     normal! m`
     if a:mode=='v'
-        execute 'normal! \<esc>'
+        execute "normal! gv\<esc>"
     endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -95,7 +95,7 @@ endfunction
 function! ZF_IndentMovePrev(mode)
     normal! m`
     if a:mode=='v'
-        execute 'normal! \<esc>'
+        execute "normal! gv\<esc>"
     endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))
@@ -126,7 +126,7 @@ endfunction
 function! ZF_IndentMoveNext(mode)
     normal! m`
     if a:mode=='v'
-        execute 'normal! \<esc>'
+        execute "normal! gv\<esc>"
     endif
     let cur_line = getpos(".")[1]
     let cur_indent = ZF_IndentGetIndentLevel(getline("."))

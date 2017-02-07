@@ -16,15 +16,15 @@ vim script to move cursor quickly accorrding indent
     ```
     nnoremap EE ``
     nnoremap EH :call ZF_IndentMoveParent('n')<cr>
-    xnoremap EH :call ZF_IndentMoveParent('v')<cr>
+    xnoremap EH :<c-u>call ZF_IndentMoveParent('v')<cr>
     nnoremap EL :call ZF_IndentMoveParentEnd('n')<cr>
-    xnoremap EL :call ZF_IndentMoveParentEnd('v')<cr>
+    xnoremap EL :<c-u>call ZF_IndentMoveParentEnd('v')<cr>
     nnoremap EK :call ZF_IndentMovePrev('n')<cr>
-    xnoremap EK :call ZF_IndentMovePrev('v')<cr>
+    xnoremap EK :<c-u>call ZF_IndentMovePrev('v')<cr>
     nnoremap EJ :call ZF_IndentMoveNext('n')<cr>
-    xnoremap EJ :call ZF_IndentMoveNext('v')<cr>
+    xnoremap EJ :<c-u>call ZF_IndentMoveNext('v')<cr>
     nnoremap EI :call ZF_IndentMoveChild('n')<cr>
-    xnoremap EI :call ZF_IndentMoveChild('v')<cr>
+    xnoremap EI :<c-u>call ZF_IndentMoveChild('v')<cr>
     ```
 
 # functions
