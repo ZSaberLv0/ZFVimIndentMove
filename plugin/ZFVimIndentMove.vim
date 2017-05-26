@@ -1,6 +1,8 @@
 " ZFVimIndentMove - vim script to move cursor quickly accorrding indent
 " Author:  ZSaberLv0 <http://zsaber.com/>
 
+let g:ZFVimIndentMove_loaded=1
+
 function! ZF_IndentGetIndentLevel(line)
     let tabspace = ''
     for i in range(&tabstop)
