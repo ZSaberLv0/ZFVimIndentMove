@@ -12,19 +12,24 @@ how to use
 
     Plugin 'ZSaberLv0/ZFVimIndentMove'
 
-2. have your own keymap in your vimrc, recommended keymap:
+2. use keymap to move cursor, default keymap:
 
+    nnoremap E <nop>
     nnoremap EE ``
-    nnoremap EH :call ZF_IndentMoveParent('n')<cr>
-    xnoremap EH :<c-u>call ZF_IndentMoveParent('v')<cr>
-    nnoremap EL :call ZF_IndentMoveParentEnd('n')<cr>
-    xnoremap EL :<c-u>call ZF_IndentMoveParentEnd('v')<cr>
-    nnoremap EK :call ZF_IndentMovePrev('n')<cr>
-    xnoremap EK :<c-u>call ZF_IndentMovePrev('v')<cr>
-    nnoremap EJ :call ZF_IndentMoveNext('n')<cr>
-    xnoremap EJ :<c-u>call ZF_IndentMoveNext('v')<cr>
-    nnoremap EI :call ZF_IndentMoveChild('n')<cr>
-    xnoremap EI :<c-u>call ZF_IndentMoveChild('v')<cr>
+    nnoremap <silent> EH :call ZF_IndentMoveParent('n')<cr>
+    xnoremap <silent> EH :<c-u>call ZF_IndentMoveParent('v')<cr>
+    nnoremap <silent> EL :call ZF_IndentMoveParentEnd('n')<cr>
+    xnoremap <silent> EL :<c-u>call ZF_IndentMoveParentEnd('v')<cr>
+    nnoremap <silent> EK :call ZF_IndentMovePrev('n')<cr>
+    xnoremap <silent> EK :<c-u>call ZF_IndentMovePrev('v')<cr>
+    nnoremap <silent> EJ :call ZF_IndentMoveNext('n')<cr>
+    xnoremap <silent> EJ :<c-u>call ZF_IndentMoveNext('v')<cr>
+    nnoremap <silent> EI :call ZF_IndentMoveChild('n')<cr>
+    xnoremap <silent> EI :<c-u>call ZF_IndentMoveChild('v')<cr>
+
+    you may disable the default keymap by
+
+    let g:ZFIndentMove_autoKeymap=0
 
 functions
 

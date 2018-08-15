@@ -1,6 +1,22 @@
 " ZFVimIndentMove - vim script to move cursor quickly accorrding indent
 " Author:  ZSaberLv0 <http://zsaber.com/>
 
+if !exists('g:ZFIndentMove_autoKeymap') || g:ZFIndentMove_autoKeymap
+    nnoremap E <nop>
+    nnoremap EE ``
+    nnoremap <silent> EH :call ZF_IndentMoveParent('n')<cr>
+    xnoremap <silent> EH :<c-u>call ZF_IndentMoveParent('v')<cr>
+    nnoremap <silent> EL :call ZF_IndentMoveParentEnd('n')<cr>
+    xnoremap <silent> EL :<c-u>call ZF_IndentMoveParentEnd('v')<cr>
+    nnoremap <silent> EK :call ZF_IndentMovePrev('n')<cr>
+    xnoremap <silent> EK :<c-u>call ZF_IndentMovePrev('v')<cr>
+    nnoremap <silent> EJ :call ZF_IndentMoveNext('n')<cr>
+    xnoremap <silent> EJ :<c-u>call ZF_IndentMoveNext('v')<cr>
+    nnoremap <silent> EI :call ZF_IndentMoveChild('n')<cr>
+    xnoremap <silent> EI :<c-u>call ZF_IndentMoveChild('v')<cr>
+endif
+
+" ============================================================
 function! ZF_IndentGetIndentLevel(line)
     let tabspace = ''
     for i in range(&tabstop)
