@@ -55,7 +55,7 @@ function! s:action(action, mode)
     silent! unlet s:target
     execute 'call ' . a:action . '()'
     if exists('s:target') && s:target != getpos('.')[1]
-        let curPos = getcurpos()
+        let curPos = getpos('.')
         let curPos[1] = s:target
         call setpos('.', curPos)
     endif
