@@ -26,7 +26,7 @@ function! ZF_IndentGetIndentLevel(line)
     return strlen(matchstr(line, "^\\s\\+")) / &tabstop
 endfunction
 function! ZF_IndentIsEmpty(line)
-    return strlen(substitute(a:line, '[\t ]', '', 'g')) == 0
+    return empty(substitute(a:line, '[\t ]', '', 'g'))
 endfunction
 
 function! ZF_IndentMoveParent(mode)
@@ -67,6 +67,7 @@ endfunction
 
 function! s:actionMoveParent()
     let curIndent = ZF_IndentGetIndentLevel(getline('.'))
+    let curEmpty = ZF_IndentIsEmpty(getline('.'))
     for i in range(getpos('.')[1] - 1, 1, -1)
         let line = getline(i)
         if ZF_IndentIsEmpty(line)
@@ -74,6 +75,9 @@ function! s:actionMoveParent()
                 let s:target = i
             endif
             continue
+        elseif curEmpty
+            let s:target = i
+            break
         endif
         let targetIndent = ZF_IndentGetIndentLevel(line)
         if (targetIndent == 0 && curIndent == 0) || targetIndent < curIndent
@@ -84,6 +88,7 @@ function! s:actionMoveParent()
 endfunction
 function! s:actionMoveParentEnd()
     let curIndent = ZF_IndentGetIndentLevel(getline('.'))
+    let curEmpty = ZF_IndentIsEmpty(getline('.'))
     for i in range(getpos('.')[1] + 1, line('$'))
         let line = getline(i)
         if ZF_IndentIsEmpty(line)
@@ -91,6 +96,9 @@ function! s:actionMoveParentEnd()
                 let s:target = i
             endif
             continue
+        elseif curEmpty
+            let s:target = i
+            break
         endif
         let targetIndent = ZF_IndentGetIndentLevel(line)
         if (targetIndent == 0 && curIndent == 0) || targetIndent < curIndent
@@ -101,10 +109,14 @@ function! s:actionMoveParentEnd()
 endfunction
 function! s:actionMoveChild()
     let curIndent = ZF_IndentGetIndentLevel(getline('.'))
+    let curEmpty = ZF_IndentIsEmpty(getline('.'))
     for i in range(getpos('.')[1] + 1, line('$'))
         let line = getline(i)
         if ZF_IndentIsEmpty(line)
             continue
+        elseif curEmpty
+            let s:target = i
+            break
         endif
         let targetIndent = ZF_IndentGetIndentLevel(line)
         if targetIndent < curIndent
@@ -117,6 +129,7 @@ function! s:actionMoveChild()
 endfunction
 function! s:actionMovePrev()
     let curIndent = ZF_IndentGetIndentLevel(getline('.'))
+    let curEmpty = ZF_IndentIsEmpty(getline('.'))
     let skipFlag = 0
     for i in range(getpos('.')[1] - 1, 1, -1)
         let line = getline(i)
@@ -126,6 +139,9 @@ function! s:actionMovePrev()
                 let s:target = i
             endif
             continue
+        elseif curEmpty
+            let s:target = i
+            break
         endif
         let targetIndent = ZF_IndentGetIndentLevel(line)
         if targetIndent > curIndent
@@ -140,6 +156,7 @@ function! s:actionMovePrev()
 endfunction
 function! s:actionMoveNext()
     let curIndent = ZF_IndentGetIndentLevel(getline('.'))
+    let curEmpty = ZF_IndentIsEmpty(getline('.'))
     let skipFlag = 0
     for i in range(getpos('.')[1] + 1, line('$'))
         let line = getline(i)
@@ -149,6 +166,9 @@ function! s:actionMoveNext()
                 let s:target = i
             endif
             continue
+        elseif curEmpty
+            let s:target = i
+            break
         endif
         let targetIndent = ZF_IndentGetIndentLevel(line)
         if targetIndent > curIndent
