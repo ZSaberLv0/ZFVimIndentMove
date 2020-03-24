@@ -35,7 +35,7 @@ functions
 
 * ZF_IndentGetIndentLevel(line)
 
-    get indent level of line, accorrding to your `tabstop`
+    get indent level of line, accorrding to your `min(tabstop, softtabstop)`
 
 * ZF_IndentIsEmpty(line)
 

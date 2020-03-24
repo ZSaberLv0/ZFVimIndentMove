@@ -18,12 +18,18 @@ endif
 
 " ============================================================
 function! ZF_IndentGetIndentLevel(line)
+    if &tabstop > 0
+        let tabstop = &tabstop
+    endif
+    if &softtabstop > 0 && &softtabstop < tabstop
+        let tabstop = &softtabstop
+    endif
     let tabspace = ''
-    for i in range(&tabstop)
+    for i in range(tabstop)
         let tabspace .= ' '
     endfor
     let line = substitute(a:line, '\t', tabspace, 'g')
-    return strlen(matchstr(line, "^\\s\\+")) / &tabstop
+    return strlen(matchstr(line, "^\\s\\+")) / tabstop
 endfunction
 function! ZF_IndentIsEmpty(line)
     return empty(substitute(a:line, '[\t ]', '', 'g'))

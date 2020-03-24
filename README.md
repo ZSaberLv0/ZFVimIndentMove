@@ -40,7 +40,7 @@ if you like my work, [check here](https://github.com/ZSaberLv0?utf8=%E2%9C%93&ta
 
 * `ZF_IndentGetIndentLevel(line)`
 
-    get indent level of line, accorrding to your `tabstop`
+    get indent level of line, accorrding to your `min(tabstop, softtabstop)`
 
 * `ZF_IndentIsEmpty(line)`
 
